@@ -1,3 +1,4 @@
+#In this code we have scrap multiple pages from the website and store book's data in CSV. We have used writer library to export data to CSV
 import requests
 from bs4 import BeautifulSoup
 from csv import writer
@@ -18,8 +19,7 @@ with open('multi_page_writers.csv', 'w', encoding='utf8', newline='') as f:
         lists = section.find('ol').find_all('li')
         for list in lists:
             article = list.find("article", class_="product_pod")
-            title = article.find("div", class_="image_container").find(
-                'img').attrs['alt']
+            title = article.find("div", class_="image_container").find('img').attrs['alt']
             ratings = article.find('p', class_="star-rating")['class'][1]
             price = article.find('p', class_="price_color").text[1:]
             row = [title, ratings, price]

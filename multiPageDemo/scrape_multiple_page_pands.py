@@ -17,8 +17,7 @@ while (True):
     lists = section.find('ol').find_all('li')
     for list in lists:
         article = list.find("article", class_="product_pod")
-        title = article.find("div", class_="image_container").find(
-            'img').attrs['alt']
+        title = article.find("div", class_="image_container").find('img').attrs['alt']
         ratings = article.find('p', class_="star-rating")['class'][1]
         price = article.find('p', class_="price_color").text[1:]
         row = [title, ratings, price]

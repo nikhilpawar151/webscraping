@@ -20,15 +20,10 @@ with open('books_data.csv', 'w', encoding="utf8", newline='') as f:
     for i in li:
         article = i.find('article')
 
-        title = article.find('div', class_="image_container").find(
-            'img').attrs['alt']  # Find ALT tag in image
+        title = article.find('div', class_="image_container").find('img').attrs['alt']  # Find ALT tag in image
         # used to find class name
         rating = article.find('p', class_="star-rating")['class'][1]
         price = article.find("p", class_="price_color").text[1:]
         op = [title, rating, price]
-        """ if article.find('section') != None:
-            print("Present")
-        else:
-            print("Not present") """
         # print(op)
         thewriter.writerow(op)

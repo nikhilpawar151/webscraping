@@ -1,3 +1,4 @@
+#In this file we have use web scraping to get the list of properties from housing.com website. And store that properties in CSV
 from bs4 import BeautifulSoup
 import requests
 from csv import writer
@@ -17,18 +18,12 @@ with open('housing_data.csv', 'w', encoding='utf-8-sig', newline='') as f:
     thewriter.writerow(header)
     for l in lists:
         # .find("span", class_="css-0").text
-        broker = l.find("div", class_="css-a17j20").find("a",
-                                                         class_="css-0").contents[0]
+        broker = l.find("div", class_="css-a17j20").find("a", class_="css-0").contents[0]
         price = l.find("div", class_="css-132rfk5").text
         size = l.find("div", class_="css-11nfaq3").text
-        details = l.find("div", class_="css-79elbk").find("span",
-                                                          class_="css-14g5neq").text.replace('\n', ' ')
+        details = l.find("div", class_="css-79elbk").find("span", class_="css-14g5neq").text.replace('\n', ' ')
         data = [i, broker, price, size, details]
         thewriter.writerow(data)
         # print(data)
         i += 1
-""" 
 
-data = urllib.request.urlopen(url).read()
-print(data)
- """
